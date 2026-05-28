@@ -1,0 +1,37 @@
+type SupportedVuln = 
+ record {
+   description: text;
+   id: text;
+   name: text;
+ };
+type Severity = 
+ variant {
+   critical;
+   high;
+   info;
+   low;
+   medium;
+ };
+type Issue = 
+ record {
+   description: text;
+   fixSnippet: text;
+   lineHint: opt text;
+   severity: Severity;
+   title: text;
+ };
+type AuditResult = 
+ record {
+   cleanChecks: vec text;
+   contractId: text;
+   issues: vec Issue;
+   language: text;
+   riskScore: nat;
+   timestamp: int;
+ };
+service : {
+  auditContract: (_code: text, lang: text) -> (opt AuditResult);
+  getLastAudit: () -> (opt AuditResult) query;
+  getSupportedVulns: () -> (vec SupportedVuln) query;
+  health: () -> (text) query;
+}

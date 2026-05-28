@@ -1,0 +1,22 @@
+// Version: 1.0.0
+type AuditResult__337960346 =
+  {
+    cleanChecks : [Text];
+    contractId : Text;
+    issues : [Issue__974571379];
+    language : Text;
+    riskScore : Nat;
+    timestamp : Int
+  };
+type Issue__974571379 =
+  {
+    description : Text;
+    fixSnippet : Text;
+    lineHint : ?Text;
+    severity : Severity__931538482;
+    title : Text
+  };
+type Severity__931538482 = {#critical; #high; #info; #low; #medium};
+actor {
+  stable var lastAudit : ?AuditResult__337960346
+};

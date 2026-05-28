@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "canisters": {
+    "smarty_backend": {
+      "type": "motoko",
+      "main": "src/canisters/backend/main.mo"
+    },
+    "smarty_frontend": {
+      "type": "assets",
+      "source": ["dist"],
+      "dependencies": ["smarty_backend"]
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  }
+}
